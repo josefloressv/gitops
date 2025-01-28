@@ -1,5 +1,5 @@
+name: webapp-color
 environment: dev
-
 deployment:
   replicaCount: 1
   image:

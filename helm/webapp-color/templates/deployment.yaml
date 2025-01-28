@@ -3,12 +3,12 @@ kind: Deployment
 metadata:
   labels:
     {{- include "webapp-color.labels" . }}
-  name: {{ .Values.name }}-deploy
+  name: {{ .Release.Name }}-deploy
 spec:
   replicas: {{ .Values.deployment.replicaCount }}
   selector:
     matchLabels:
-      app: {{ .Values.name }}
+      app: {{ .Release.Name }}
   template:
     metadata:
       labels:
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - image: {{ .Values.deployment.image.repository }}:{{ .Values.deployment.image.tag | default "latest" }}
-        name: {{ .Values.name }}
+        name: {{ .Release.Name }}
         envFrom:
          - configMapRef:
-                name: {{ .Values.name }}-config
+                name: {{ .Release.Name }}-config
