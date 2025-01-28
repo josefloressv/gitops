@@ -33,3 +33,10 @@ variable "node_scaling_config" {
 }
 
 #endregion
+
+#region Helm
+variable "argocd_chart_version" {
+  type        = string
+  description = "The version of ArgoCD to deploy"
+}
+#endregion

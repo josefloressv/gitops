@@ -41,7 +41,8 @@ fi
 # Install Terraform using tfenv
 # ----------------------------------------------------------------
 # Check if current Terraform version matches required version
-CURRENT_TF_VERSION=$(terraform version -json | awk '{if(NR==1) print $2}' | sed 's/v//')
+CURRENT_TF_VERSION=$(terraform version | head -n 1 | awk '{print $2}' | sed 's/v//')
+echo "Current Terraform version: $CURRENT_TF_VERSION"
 if [ "$CURRENT_TF_VERSION" != "$TF_VERSION" ]; then
   # Install Terraform using tfenv
   echo "Installing Terraform $TF_VERSION..."
@@ -59,7 +60,7 @@ terraform fmt
 
 # Initialize
 echo "Initializing Terraform..."
-terraform init -upgrade -input=false
+terraform init
 
 # Workspace
 echo "Terraform workspace..."
@@ -90,14 +91,16 @@ if [ "_${TFACTION}" == "_apply" ]; then
   terraform apply \
     -auto-approve=true \
     "$ENV.tfplan"
-fi
-
+elif [ "_${TFACTION}" == "_destroy" ]; then
 # Destroy
-if [ "_${TFACTION}" == "_destroy" ]; then
   echo "Running Terraform destroy..."
   terraform destroy \
     -input=false \
     -var-file="$VAR_FILE"
+elif [ "_${TFACTION}" == "_out" ]; then
+# Destroy
+  echo "Running Terraform Output..."
+  terraform output
 fi
 
 # clear TF state local, to avoid fail when change the environment

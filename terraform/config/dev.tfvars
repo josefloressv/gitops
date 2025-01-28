@@ -6,3 +6,6 @@ node_scaling_config = {
   desired_size = 1
   max_size     = 3
 }
+
+# ArgoCD
+argocd_chart_version = "5.19.12"
