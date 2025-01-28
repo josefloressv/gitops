@@ -1,7 +1,8 @@
 locals {
+  environment = terraform.workspace
   tags = {
     Application    = "gitops"
-    Environment    = "dev"
+    Environment    = local.environment
     ProvissionedBy = "Terraform"
   }
 }

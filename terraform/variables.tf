@@ -1,8 +1,23 @@
+#region Dinamically from deploy-infra.sh
+variable "aws_region" {
+  type        = string
+  description = "The AWS region to deploy the resources"
+}
+
+#endregion
+
+#region VPC
+variable "vpc_cidr" {
+  type        = string
+  description = "The CIDR block for the VPC"
+}
+
+#endregion
+
 #region EKS cluster
 variable "kubernetes_version" {
   type        = string
   description = "The Kubernetes version for the EKS cluster"
-  default = "1.31"
 }
 #endregion
 
@@ -10,17 +25,11 @@ variable "kubernetes_version" {
 variable "instance_types" {
   type        = list(string)
   description = "The instance types for the EKS node group"
-  default     = ["t3.medium"]
 }
 
 variable "node_scaling_config" {
   type        = map(number)
   description = "The scaling configuration for the EKS node group"
-  default = {
-    min_size     = 1
-    desired_size = 1
-    max_size     = 3
-  }
 }
 
 #endregion

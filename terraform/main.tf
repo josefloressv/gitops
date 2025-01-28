@@ -2,7 +2,8 @@ module "vpc" {
   source = "./modules/vpc"
 
   tags     = local.tags
-  vpc_cidr = "10.0.0.0/16"
+  vpc_cidr = var.vpc_cidr
+
 }
 
 module "eks" {
