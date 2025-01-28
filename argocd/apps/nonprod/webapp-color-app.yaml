@@ -13,6 +13,8 @@ spec:
       parameters:
       - name: "environment"
         value: "dev"
+      - name: "deployment.replicaCount"
+        value: "2"
   destination:
     server: https://kubernetes.default.svc
     namespace: dev
