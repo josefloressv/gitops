@@ -38,3 +38,6 @@ terraform.rc
 
 # Ignore terraform lock files
 .terraform.lock.hcl
+
+# Terraform plan output
+*.tfplan

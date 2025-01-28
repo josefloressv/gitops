@@ -1,6 +1,7 @@
 #! /usr/bin/env bash
 set -o nounset -o pipefail -o errexit;
 
+TIME_START=$(date +%s)
 # Source the .env file
 INFRA_DIR=terraform
 cd "$INFRA_DIR"
@@ -101,3 +102,7 @@ fi
 
 # clear TF state local, to avoid fail when change the environment
 # rm -rf .terraform/terraform.tfstate
+
+# Print execution time
+TIME_END=$(date +%s)
+echo "Execution time: $((TIME_END - TIME_START)) seconds"
