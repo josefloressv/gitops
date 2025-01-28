@@ -13,6 +13,8 @@ spec:
       parameters:
       - name: "environment"
         value: "dev"
+      - name: "deployment.image.tag"
+        value: "1.0.0"
       - name: "deployment.replicaCount"
         value: "2"
   destination:
