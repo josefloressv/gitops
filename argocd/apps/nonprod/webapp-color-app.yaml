@@ -13,10 +13,6 @@ spec:
       parameters:
       - name: "environment"
         value: "dev"
-      - name: "service.type"
-        value: "NodePort"
-      - name: "service.nodePort"
-        value: "30083"
   destination:
     server: https://kubernetes.default.svc
     namespace: dev
