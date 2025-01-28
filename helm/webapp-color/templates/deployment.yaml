@@ -19,4 +19,4 @@ spec:
         name: {{ .Values.name }}
         envFrom:
          - configMapRef:
-                name: {{ .Values.configMap.name }}
+                name: {{ .Values.name }}-config

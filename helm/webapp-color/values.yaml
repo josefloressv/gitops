@@ -1,8 +1,4 @@
-environment: development
-name: webapp-color
-
-configMap:
-  name: webapp-color-configmap
+environment: dev
 
 deployment:
   replicaCount: 1
